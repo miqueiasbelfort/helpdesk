@@ -10,13 +10,12 @@ import {
     AirplanemodeActive as AirplanemodeActiveIcon
 } from '@mui/icons-material';
 
-import { TextField, FormLabel } from '@mui/material';
+import { FormLabel } from '@mui/material';
+import TextField from "@/Components/TextField";
 
 const Ticket = ({ auth }) => {
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-        >
+        <AuthenticatedLayout user={auth.user}>
             <Head title="Ticket - 1234" />
             <div className="flex items-center justify-between">
                 <h1 className='text-4xl font-bold'>Ticket - 1234</h1>
@@ -30,21 +29,22 @@ const Ticket = ({ auth }) => {
             <div className="mt-4">
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="open_to">Aberto Por</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="open_to" className="dark:text-white">Aberto Por</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="open_to"
+                            value={"Miqueias Kawã Sousa Belfort"}
                         />
                     </div>
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="departament">Departamento</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="departament" className="dark:text-white">Departamento</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="departament"
                         />
@@ -52,21 +52,21 @@ const Ticket = ({ auth }) => {
                 </div>
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="">Área Responsável</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="" className="dark:text-white">Área Responsável</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="responsible_area"
                         />
                     </div>
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="responsible_operator">Operador responsável</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="responsible_operator" className="dark:text-white">Operador responsável</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="responsible_operator"
                         />
@@ -74,21 +74,21 @@ const Ticket = ({ auth }) => {
                 </div>
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="open_user">Contato</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="open_user" className="dark:text-white">Contato</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="open_user"
                         />
                     </div>
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="email">Email de contato</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="email" className="dark:text-white">Email de contato</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="email"
                         />
@@ -96,28 +96,28 @@ const Ticket = ({ auth }) => {
                 </div>
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="status">Status</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="status" className="dark:text-white">Status</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="status"
                         />
                     </div>
                     <div className="w-full">
-                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="priority">Prioridade</FormLabel>
+                        <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="priority" className="dark:text-white">Prioridade</FormLabel>
                         <TextField
                             size="small"
                             hiddenLabel
-                            className="w-full"
+                            className="w-full dark:text-white"
                             disabled
                             id="priority"
                         />
                     </div>
                 </div>
                 <div className="mb-3">
-                    <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="description">Descrição</FormLabel>
+                    <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="description" className="dark:text-white">Descrição</FormLabel>
                     <TextField
                         id="description"
                         multiline
@@ -127,22 +127,22 @@ const Ticket = ({ auth }) => {
                     />
                 </div>
                 <div>
-                    <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="files">Arquivos</FormLabel>
+                    <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="files" className="dark:text-white">Arquivos</FormLabel>
                     <div className="flex items-center gap-4 flex-wrap">
                         <div className="min-h-10 min-w-20 shadow-md rounded border flex items-center justify-center p-3">
-                            <span className="text-slate-500">nome.jpg</span>
+                            <span className="text-slate-500 dark:text-slate-200">nome.jpg</span>
                         </div>
                         <div className="min-h-10 min-w-20 shadow-md rounded border flex items-center justify-center p-3">
-                            <span className="text-slate-500">asdasdasdsadsada.jpg</span>
+                            <span className="text-slate-500 dark:text-slate-200">asdasdasdsadsada.jpg</span>
                         </div>
                         <div className="min-h-10 min-w-20 shadow-md rounded border flex items-center justify-center p-3">
-                            <span className="text-slate-500">asdasdasdsadsada.jpg</span>
+                            <span className="text-slate-500 dark:text-slate-200">asdasdasdsadsada.jpg</span>
                         </div>
                         <div className="min-h-10 min-w-20 shadow-md rounded border flex items-center justify-center p-3">
-                            <span className="text-slate-500">asdasdasdsadsada.jpg</span>
+                            <span className="text-slate-500 dark:text-slate-200">asdasdasdsadsada.jpg</span>
                         </div>
                         <div className="min-h-10 min-w-20 shadow-md rounded border flex items-center justify-center p-3">
-                            <span className="text-slate-500">asdasdasdsadsada.jpg</span>
+                            <span className="text-slate-500 dark:text-slate-200">asdasdasdsadsada.jpg</span>
                         </div>
                     </div>
                 </div>

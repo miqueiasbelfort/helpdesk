@@ -7,6 +7,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 
 import PersonIcon from '@mui/icons-material/Person';
 import HelpIcon from '@mui/icons-material/Help';
+import Header from '@/Components/Header';
 
 export default function Dashboard({ auth }) {
     return (
@@ -14,9 +15,11 @@ export default function Dashboard({ auth }) {
             user={auth.user}
         >
             <Head title="Minha Área" />
-            <h1 className='text-4xl font-bold'>Minha Área</h1>
+            <Header>
+                <h1 className='text-4xl font-bold'>Minha Área</h1>
+            </Header>
             <div className='w-full mt-5'>
-                <Accordion sx={{ width: '100%' }}>
+                <Accordion sx={{ width: '100%' }} className='dark:bg-slate-700 dark:text-white'>
                     <AccordionSummary className='w-full h-24'>
                         <div
                             className='flex items-center gap-3 justify-between w-full'
@@ -33,9 +36,9 @@ export default function Dashboard({ auth }) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div className='max-h-[50vh] overflow-y-auto'>
-                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
+                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
                                 <div>
-                                    <h1 className='font-bold text-secondary'>Nº 1450</h1>
+                                    <h1 className='font-bold text-secondary dark:text-primary'>Nº 1450</h1>
                                     <p>Sistemas Academicos</p>
                                     <p>Miqueias Kawã Sousa Belfort</p>
                                 </div>
@@ -50,7 +53,7 @@ export default function Dashboard({ auth }) {
                         </div>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion sx={{ width: '100%' }}>
+                <Accordion sx={{ width: '100%' }} className='dark:bg-slate-700 dark:text-white'>
                     <AccordionSummary className='w-full h-24'>
                         <div
                             className='flex items-center gap-3 justify-between w-full'
@@ -67,9 +70,9 @@ export default function Dashboard({ auth }) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div className='max-h-[50vh] overflow-y-auto'>
-                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
+                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
                                 <div>
-                                    <h1 className='font-bold text-secondary'>Nº 1450</h1>
+                                    <h1 className='font-bold text-secondary dark:text-primary'>Nº 1450</h1>
                                     <p>Sistemas Academicos</p>
                                     <p>Miqueias Kawã Sousa Belfort</p>
                                 </div>

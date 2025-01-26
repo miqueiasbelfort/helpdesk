@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 export const SwitchThemeModa = () => {
 
-    const [darkMode, setDarkModa] = useState('');
+    const [darkMode, setDarkModa] = useState(localStorage.getItem('theme'));
 
     const handleChangeTheme = () => {
         if(darkMode == 'dark'){
@@ -17,14 +17,6 @@ export const SwitchThemeModa = () => {
             setDarkModa('dark');
         }
     };
-
-    useEffect(() => {
-        setDarkModa(localStorage.getItem("theme"));
-        if(localStorage.getItem("theme") == 'dark'){
-            setDarkModa('dark');
-            document.documentElement.classList.add("dark");
-        }
-    }, []);
 
     return (
         <button onClick={handleChangeTheme}>
