@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('company')->nullable();
             $table->string('local')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

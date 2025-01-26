@@ -23,12 +23,12 @@ export const Sidebar = ({ user }) => {
             </div>
 
             {
-                user.type == 2 && (
+                user.is_admin && (
                     <div>
                         <h2 className="text-secondary dark:text-primary text-lg font-bold">Administrado</h2>
                         <ul className="flex flex-col gap-3">
                             <li className="w-full p-5 rounded-md bg-slate-300/10 text-base hover:bg-slate-300/20 cursor-pointer">
-                                <Link className="text-white font-bold flex items-center gap-2"><BusinessIcon /> Adicionar Departamento</Link>
+                                <Link href={route('departaments')} className="text-white font-bold flex items-center gap-2"><BusinessIcon /> Departamentos</Link>
                             </li>
                             <li className="w-full p-5 rounded-md bg-slate-300/10 text-base hover:bg-slate-300/20 cursor-pointer">
                                 <Link className="text-white font-bold flex items-center gap-2"><BusinessIcon /> Adicionar Status Tickets</Link>

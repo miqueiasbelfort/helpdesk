@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Foundation\Application;
@@ -32,6 +33,10 @@ Route::get('/dashboard', function () {
 
 Route::prefix('ticket')->group(function(){
     Route::get('/', [TicketController::class, 'index'])->name('ticket');
+})->middleware(['auth', 'verified']);
+
+Route::prefix('departaments')->group(function(){
+    Route::get('/', [DepartamentController::class, 'index'])->name('departaments');
 })->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

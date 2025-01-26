@@ -48,8 +48,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        $user = $user->each(fn($item) => $item->isAdmin = $item->type == 2 ? true : false);
-
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);

@@ -44,8 +44,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function getIsAdmin()
+    protected $appends = ['is_admin', 'is_operator', 'is_user'];
+
+    public function getIsAdminAttribute()
     {
-        return $this->type == 2 ? true : false;    
+        return $this->type === 2;
+    }
+
+    public function getIsOperatorAttribute()
+    {
+        return $this->type === 1;
+    }
+
+    public function getIsUserAttribute()
+    {
+        return $this->type === 0;
     }
 }

@@ -2,7 +2,17 @@ import React, {useEffect, useState} from "react";
 import { TextField } from '@mui/material';
 import { createTheme, ThemeProvider} from "@mui/material/styles";
 
-const TextFieldTheme = ({ size = '', className = '', id, disabled = false, value = '', hiddenLabel = false, multiline = false, rows = 0 }) => {
+const TextFieldTheme = ({ 
+    size = '', 
+    className = '', 
+    id, 
+    disabled = false, 
+    value = '', 
+    hiddenLabel = false, 
+    multiline = false, 
+    rows = 0,
+    label = ''
+}) => {
 
     const [mode, setMode] = useState('light');
 
@@ -26,7 +36,6 @@ const TextFieldTheme = ({ size = '', className = '', id, disabled = false, value
         },
     });
 
-
     useEffect(() => {
         setMode(localStorage.getItem('theme'));
     }, []);
@@ -36,6 +45,7 @@ const TextFieldTheme = ({ size = '', className = '', id, disabled = false, value
             <TextField
                 size={size}
                 hiddenLabel={hiddenLabel}
+                label={label}
                 className={className}
                 disabled={disabled}
                 id={id}
