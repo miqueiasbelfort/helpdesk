@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -33,49 +33,20 @@ export default function Dashboard({ auth }) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div className='max-h-[50vh] overflow-y-auto'>
-                            <div className='w-full h-32 space-x-4 shadow-md border mb-4 flex items-center justify-between p-5'>
+                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
                                 <div>
                                     <h1 className='font-bold text-secondary'>Nº 1450</h1>
                                     <p>Sistemas Academicos</p>
                                     <p>Miqueias Kawã Sousa Belfort</p>
                                 </div>
                                 <div className='flex items-center gap-3'>
-                                    <p>Departamento: Recursos Humanos</p>
-                                    <p>Tempo: 10h</p>
-                                    <p>Prioriedade: <span>Baixa</span></p>
-                                    <p>Tipo: Insidente</p>
+                                    <p><span className='font-bold'>Departamento:</span> Recursos Humanos</p>
+                                    <p><span className='font-bold'>Tempo:</span> 10h</p>
+                                    <p><span className='font-bold'>Prioriedade:</span> <span className='text-green-500'>Baixa</span></p>
+                                    <p><span className='font-bold'>Tipo:</span> Insidente</p>
+                                    <p><span className='font-bold'>Status:</span> Aberto</p>
                                 </div>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 2</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 3</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 4</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 5</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 6</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 7</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
+                            </Link>
                         </div>
                     </AccordionDetails>
                 </Accordion>
@@ -96,39 +67,20 @@ export default function Dashboard({ auth }) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div className='max-h-[50vh] overflow-y-auto'>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 1</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 2</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 3</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 4</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 5</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 6</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 7</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
-                            <div className='w-full h-20 shadow-md border mb-4'>
-                                <h1>Chamado 8</h1>
-                            </div>
+                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
+                                <div>
+                                    <h1 className='font-bold text-secondary'>Nº 1450</h1>
+                                    <p>Sistemas Academicos</p>
+                                    <p>Miqueias Kawã Sousa Belfort</p>
+                                </div>
+                                <div className='flex items-center gap-3'>
+                                    <p><span className='font-bold'>Departamento:</span> Recursos Humanos</p>
+                                    <p><span className='font-bold'>Tempo:</span> 10h</p>
+                                    <p><span className='font-bold'>Prioriedade:</span> <span className='text-green-500'>Baixa</span></p>
+                                    <p><span className='font-bold'>Tipo:</span> Insidente</p>
+                                    <p><span className='font-bold'>Status:</span> Em Analise</p>
+                                </div>
+                            </Link>
                         </div>
                     </AccordionDetails>
                 </Accordion>
