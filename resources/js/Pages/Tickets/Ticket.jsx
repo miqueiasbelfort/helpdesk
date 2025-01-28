@@ -147,7 +147,7 @@ const Ticket = ({ auth }) => {
                     </div>
                 </div>
                 <div className="mt-4">
-                    <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="notes">Notas</FormLabel>
+                    <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="notes" className="dark:text-white">Notas</FormLabel>
                     <ul>
                         <li className="flex flex-col gap-2 mt-3 p-4 shadow-md rounded border">
                             <div className="flex items-center gap-3">

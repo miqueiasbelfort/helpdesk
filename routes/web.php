@@ -37,6 +37,9 @@ Route::prefix('ticket')->group(function(){
 
 Route::prefix('departaments')->group(function(){
     Route::get('/', [DepartamentController::class, 'index'])->name('departaments');
+    Route::post('/', [DepartamentController::class, 'store'])->name('departaments.store');
+    Route::put('/{id}', [DepartamentController::class, 'update'])->name('departaments.update');
+    Route::delete('/{id}', [DepartamentController::class, 'destroy'])->name('departaments.destroy');
 })->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

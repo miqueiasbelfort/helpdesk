@@ -1,44 +1,47 @@
-import React, {useEffect, useState} from "react";
+import React, { useMemo, useContext } from "react";
 import { TextField } from '@mui/material';
-import { createTheme, ThemeProvider} from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeContext } from "@/Layouts/Theme";
 
-const TextFieldTheme = ({ 
-    size = '', 
-    className = '', 
-    id, 
-    disabled = false, 
-    value = '', 
-    hiddenLabel = false, 
-    multiline = false, 
+
+const TextFieldTheme = ({
+    size = '',
+    className = '',
+    id,
+    disabled = false,
+    value = '',
+    hiddenLabel = false,
+    multiline = false,
     rows = 0,
-    label = ''
+    label = '',
+    onChange = (e) => e
 }) => {
 
-    const [mode, setMode] = useState('light');
+    const { theme } = useContext(ThemeContext);
 
-    const darkTheme = createTheme({
-        palette: {
-            mode: mode,
-            text: {
-                primary: mode === 'dark' ? '#fff' : '#000',
-            },
-        },
-        components: {
-            MuiOutlinedInput: {
-                styleOverrides: {
-                    root: {
-                        '&.Mui-disabled': {
-                            borderColor: mode === 'dark' ? 'white' : '#ccc',
+    const darkTheme = useMemo(
+        () =>
+            createTheme({
+                palette: {
+                    mode: theme,
+                    text: {
+                        primary: theme === "dark" ? "#fff" : "#000",
+                    },
+                },
+                components: {
+                    MuiOutlinedInput: {
+                        styleOverrides: {
+                            root: {
+                                "&.Mui-disabled": {
+                                    borderColor: theme === "dark" ? "white" : "#ccc",
+                                },
+                            },
                         },
                     },
                 },
-            },
-        },
-    });
-
-    useEffect(() => {
-        setMode(localStorage.getItem('theme'));
-    }, []);
+            }),
+        [theme]
+    );
 
     return (
         <ThemeProvider theme={darkTheme}>
@@ -52,6 +55,7 @@ const TextFieldTheme = ({
                 value={value}
                 multiline={multiline}
                 rows={rows}
+                onChange={e => onChange(e.target.value)}
             />
         </ThemeProvider>
     );

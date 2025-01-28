@@ -1,30 +1,21 @@
-import React, {useState} from "react";
-import NightlightIcon from '@mui/icons-material/Nightlight';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import React, { useContext } from "react";
+import NightlightIcon from "@mui/icons-material/Nightlight";
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import { ThemeContext } from "@/Layouts/Theme";
 
 export const SwitchThemeModa = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
 
-    const [darkMode, setDarkModa] = useState(localStorage.getItem('theme'));
+  const handleChangeTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    setTheme(newTheme);
+  };
 
-    const handleChangeTheme = () => {
-        if(darkMode == 'dark'){
-            localStorage.setItem("theme", "light");
-            document.documentElement.classList.remove("dark");
-            setDarkModa('light');
-        } else {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-            setDarkModa('dark');
-        }
-    };
-
-    return (
-        <button onClick={handleChangeTheme}>
-            {darkMode == 'light' ? (
-                <NightlightIcon />
-            ) : (
-                <WbSunnyIcon />
-            )}
-        </button>
-    );
+  return (
+    <button onClick={handleChangeTheme} aria-label="Switch Theme">
+      {theme === "light" ? <NightlightIcon /> : <WbSunnyIcon />}
+    </button>
+  );
 };
