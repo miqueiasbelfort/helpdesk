@@ -12,28 +12,26 @@ import { useForm } from '@inertiajs/react';
 import InputError from "@/Components/InputError";
 import TextInput from "@/Components/TextInput";
 
-const FormModal = ({ handleClose, open, departament }) => {
+const FormTicketStatusModal = ({ handleClose, open, status }) => {
 
     const label = { inputProps: { 'aria-label': 'Color switch demo' } };
     
     const {data, setData, reset, post, put, errors} = useForm({
         name: '',
         description: '',
-        company: '',
-        local: '',
         status: false
     });
 
     const submit = (e) => {
         e.preventDefault();
-        if (departament) {
-            put(route('departaments.update', { id: departament.id }), {
+        if (status) {
+            put(route('ticket-status.update', { id: status.id }), {
                 onSuccess: () => {
                     onClose(); 
                 }
             });
         } else {
-            post(route('departaments.store'), {
+            post(route('ticket-status.store'), {
                 onSuccess: () => {
                     onClose(); 
                 }
@@ -47,18 +45,16 @@ const FormModal = ({ handleClose, open, departament }) => {
     }
 
     useEffect(() => {
-        if (departament) {
+        if (status) {
             setData({
-                name: departament.name || '',
-                description: departament.description || '',
-                company: departament.company || '',
-                local: departament.local || '',
-                status: departament.status || false,
+                name: status.name || '',
+                description: status.description || '',
+                status: status.status || false,
             });
         } else {
             reset();
         }
-    }, [departament]);
+    }, [status]);
 
     return (
         <Dialog 
@@ -67,7 +63,7 @@ const FormModal = ({ handleClose, open, departament }) => {
             className="w-full"
         >
             <DialogTitle className="dark:bg-slate-700 dark:text-white">
-                {departament ? 'Editar Departamento' : 'Cadastrar novo Departamento'}
+                {status ? 'Editar Status' : 'Cadastrar novo Status'}
             </DialogTitle>
             <form className="min-w-96 p-4 flex flex-col gap-5 dark:bg-slate-700" onSubmit={submit}>
                 <div>
@@ -88,24 +84,6 @@ const FormModal = ({ handleClose, open, departament }) => {
                     />
                     <InputError message={errors.description} className="mt-2" />
                 </div>
-                <div>
-                    <FormLabel htmlFor="company" className="dark:text-white">Empresa</FormLabel>
-                    <TextInput 
-                        className="w-full"
-                        value={data.company}
-                        onChange={company => setData('company', company.target.value)}
-                    />
-                    <InputError message={errors.company} className="mt-2" />
-                </div>
-                <div>
-                    <FormLabel htmlFor="local" className="dark:text-white">Local</FormLabel>
-                    <TextInput 
-                        className="w-full"
-                        value={data.local}
-                        onChange={local => setData('local', local.target.value)}
-                    />
-                    <InputError message={errors.local} className="mt-2" />
-                </div>
                 <div className="flex items-center gap-2">
                     <Switch {...label} checked={data.status} onChange={e => setData('status', e.target.checked)} id="status" />
                     <FormLabel htmlFor="status" className="dark:text-white">Ativo</FormLabel>
@@ -121,7 +99,7 @@ const FormModal = ({ handleClose, open, departament }) => {
                     <PrimaryButton 
                         type="submit"
                     >
-                        <AddIcon className="w-2 h-2 mr-2" /> {departament ? 'Editar' : 'Cadastrar'}
+                        <AddIcon className="w-2 h-2 mr-2" /> {status ? 'Editar' : 'Cadastrar'}
                     </PrimaryButton>
                 </div>
             </form>
@@ -129,4 +107,4 @@ const FormModal = ({ handleClose, open, departament }) => {
     );
 }
 
-export default FormModal;
+export default FormTicketStatusModal;

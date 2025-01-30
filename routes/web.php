@@ -3,6 +3,7 @@
 use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TicketStatusController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +34,7 @@ Route::get('/dashboard', function () {
 
 Route::prefix('ticket')->group(function(){
     Route::get('/', [TicketController::class, 'index'])->name('ticket');
+    Route::get('/ticket-status', [TicketStatusController::class, 'index'])->name('ticket-status');
 })->middleware(['auth', 'verified']);
 
 Route::prefix('departaments')->group(function(){

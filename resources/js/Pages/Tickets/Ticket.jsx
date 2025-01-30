@@ -12,6 +12,7 @@ import {
 
 import { FormLabel } from '@mui/material';
 import TextField from "@/Components/TextField";
+import TextInput from "@/Components/TextInput";
 
 const Ticket = ({ auth }) => {
     return (
@@ -30,10 +31,8 @@ const Ticket = ({ auth }) => {
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="open_to" className="dark:text-white">Aberto Por</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="open_to"
                             value={"Miqueias Kawã Sousa Belfort"}
@@ -41,10 +40,8 @@ const Ticket = ({ auth }) => {
                     </div>
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="departament" className="dark:text-white">Departamento</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="departament"
                         />
@@ -53,20 +50,16 @@ const Ticket = ({ auth }) => {
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="" className="dark:text-white">Área Responsável</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="responsible_area"
                         />
                     </div>
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="responsible_operator" className="dark:text-white">Operador responsável</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="responsible_operator"
                         />
@@ -75,20 +68,16 @@ const Ticket = ({ auth }) => {
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="open_user" className="dark:text-white">Contato</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="open_user"
                         />
                     </div>
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="email" className="dark:text-white">Email de contato</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="email"
                         />
@@ -97,20 +86,16 @@ const Ticket = ({ auth }) => {
                 <div className="flex items-center gap-4 mb-3">
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="status" className="dark:text-white">Status</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="status"
                         />
                     </div>
                     <div className="w-full">
                         <FormLabel sx={{ fontWeight: 'bold' }} htmlFor="priority" className="dark:text-white">Prioridade</FormLabel>
-                        <TextField
-                            size="small"
-                            hiddenLabel
-                            className="w-full dark:text-white"
+                        <TextInput 
+                            className="w-full"
                             disabled
                             id="priority"
                         />
