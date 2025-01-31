@@ -21,3 +21,11 @@
       background: theme('colors.secondary'); /* blue-700 */
     }
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE e Edge */
+  scrollbar-width: none; /* Firefox */
+}
