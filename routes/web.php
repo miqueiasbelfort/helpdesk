@@ -35,6 +35,7 @@ Route::get('/dashboard', function () {
 
 Route::prefix('ticket')->group(function(){
     Route::get('/', [TicketController::class, 'index'])->name('ticket');
+    Route::get('/open', [TicketController::class, 'openTicket'])->name('open-ticket');
 
     Route::get('/ticket-status', [TicketStatusController::class, 'index'])->name('ticket-status');
     Route::post('/ticket-status', [TicketStatusController::class, 'store'])->name('ticket-status.store');

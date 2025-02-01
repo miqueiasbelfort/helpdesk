@@ -11,4 +11,9 @@ class TicketController extends Controller
     {
         return Inertia::render('Tickets/Ticket');
     }
+
+    public function openTicket()
+    {
+        return Inertia::render('Tickets/OpenTicket');
+    }
 }

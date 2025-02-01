@@ -57,9 +57,11 @@ export const Sidebar = ({ user }) => {
             <div className="mt-4">
                 <h2 className="text-secondary dark:text-primary text-lg font-bold">Ticket</h2>
                 <ul className="flex flex-col gap-3">
-                    <li className="w-full p-5 rounded-md bg-slate-300/10 text-base hover:bg-slate-300/20 cursor-pointer">
-                        <Link className="text-white font-bold flex items-center gap-2"><BusinessIcon /> Abrir Ticket</Link>
-                    </li>
+                    <Link href={route('open-ticket')}>
+                        <li className="w-full p-5 rounded-md bg-slate-300/10 text-base hover:bg-slate-300/20 cursor-pointer">
+                            <span className="text-white font-bold flex items-center gap-2"><BusinessIcon /> Abrir Ticket</span>
+                        </li>
+                    </Link>
                     <li className="w-full p-5 rounded-md bg-slate-300/10 text-base hover:bg-slate-300/20 cursor-pointer">
                         <Link className="text-white font-bold flex items-center gap-2"><BusinessIcon /> Tickets para mim</Link>
                     </li>
