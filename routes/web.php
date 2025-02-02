@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DepartamentController;
+use App\Http\Controllers\MyAreaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketPriorityController;
@@ -29,13 +30,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [MyAreaController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('ticket')->group(function(){
     Route::get('/', [TicketController::class, 'index'])->name('ticket');
     Route::get('/open', [TicketController::class, 'openTicket'])->name('open-ticket');
+    Route::post('/open', [TicketController::class, 'createTicket'])->name('open-ticket.store');
 
     Route::get('/ticket-status', [TicketStatusController::class, 'index'])->name('ticket-status');
     Route::post('/ticket-status', [TicketStatusController::class, 'store'])->name('ticket-status.store');

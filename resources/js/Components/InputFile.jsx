@@ -16,6 +16,7 @@ export default forwardRef(function FileInput(
 
     const handleFileChange = (event) => {
         setSelectedFiles(Array.from(event.target.files));
+        props.onChange(event);
     };
 
     return (
