@@ -84,4 +84,10 @@ class DepartamentController extends Controller
                 ->with('error', 'Erro ao deletar departamento. Tente novamente mais tarde.');
         }
     }
+    
+    public function findAll()
+    {
+        $departaments = Departament::where('status', true)->get();
+        return response()->json($departaments);
+    }
 }

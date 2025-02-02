@@ -50,10 +50,17 @@ Route::prefix('ticket')->group(function(){
 })->middleware(['auth', 'verified']);
 
 Route::prefix('departaments')->group(function(){
+    
     Route::get('/', [DepartamentController::class, 'index'])->name('departaments');
     Route::post('/', [DepartamentController::class, 'store'])->name('departaments.store');
     Route::put('/{id}', [DepartamentController::class, 'update'])->name('departaments.update');
     Route::delete('/{id}', [DepartamentController::class, 'destroy'])->name('departaments.destroy');
+
+    // API
+    Route::prefix('api')->group(function () {
+        Route::get('/departaments', [DepartamentController::class, 'findAll'])->name('api.departaments.all');
+    });
+
 })->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

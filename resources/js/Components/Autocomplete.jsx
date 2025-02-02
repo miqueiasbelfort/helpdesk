@@ -1,24 +1,34 @@
 import React, { useState } from "react";
 import TextInput from "./TextInput";
 
-const Autocomplete = ({ options, placeholder = '', onSelect }) => {
+const Autocomplete = ({ 
+    options = [], 
+    placeholder = '', 
+    onSelect, 
+    optionKey, 
+    labelKey = 'id', 
+    disabled = false, 
+    isFeching = false, 
+    id = '',
+    description = false
+}) => {
     const [inputValue, setInputValue] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
 
     const filteredSuggestions = inputValue
-        ? options.filter((option) =>
-            option.toLowerCase().includes(inputValue.toLowerCase())
-        )
-        : options;
+    ? options.filter(option =>
+        option[labelKey]?.toLowerCase().includes(inputValue.toLowerCase())
+    )
+    : options;
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
     };
 
     const handleSelectSuggestion = (option) => {
-        setInputValue(option);
+        setInputValue(option[labelKey]); // Preenche o input com o valor visível
         setShowSuggestions(false);
-        onSelect(option);
+        onSelect(optionKey ? option[optionKey] : option); // Retorna o objeto ou valor selecionado
     };
 
     const handleInputFocus = () => {
@@ -27,13 +37,13 @@ const Autocomplete = ({ options, placeholder = '', onSelect }) => {
 
     const handleInputBlur = (e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
-            setShowSuggestions(false);
+            setTimeout(() => setShowSuggestions(false), 150); // Evita conflito no clique
         }
     };
 
     return (
         <div
-            className="relative w-full max-w-md"
+            className="relative w-full"
             onBlur={handleInputBlur}
             tabIndex={-1}
         >
@@ -43,10 +53,12 @@ const Autocomplete = ({ options, placeholder = '', onSelect }) => {
                 onChange={handleChange}
                 onFocus={handleInputFocus}
                 placeholder={placeholder}
-                className="border p-2 w-full rounded-md"
+                className="border p-2 w-full rounded-md disabled:bg-transparent/15"
+                disabled={disabled}
+                id={id}
             />
             {showSuggestions && (
-                <ul className="absolute border dark:border-slate-800 bg-white dark:bg-slate-700 w-full max-h-40 overflow-y-auto mt-1 rounded-md">
+                <ul className="absolute border dark:border-slate-800 bg-white dark:bg-slate-700 w-full max-h-40 overflow-y-auto mt-1 rounded-md z-50">
                     {filteredSuggestions.length > 0 ? (
                         filteredSuggestions.map((suggestion, index) => (
                             <li
@@ -55,7 +67,12 @@ const Autocomplete = ({ options, placeholder = '', onSelect }) => {
                                 className="p-2 cursor-pointer hover:bg-gray-200 hover:dark:bg-slate-500"
                                 tabIndex={0}
                             >
-                                {suggestion}
+                                <div className="flex items-center gap-2">
+                                    {suggestion[labelKey]}
+                                    {description && (
+                                        <span className="text-xs dark:text-slate-400 text-gray-400">{[suggestion['description']]}</span>
+                                    )}
+                                </div>
                             </li>
                         ))
                     ) : (
