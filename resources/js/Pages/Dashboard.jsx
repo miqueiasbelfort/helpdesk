@@ -9,8 +9,11 @@ import PersonIcon from '@mui/icons-material/Person';
 import HelpIcon from '@mui/icons-material/Help';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import Header from '@/Components/Header';
+import { getElapsedHours } from '@/utils/timer';
 
 export default function Dashboard({ auth, myDepartament }) {
+
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -35,7 +38,7 @@ export default function Dashboard({ auth, myDepartament }) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div className='max-h-[50vh] overflow-y-auto'>
-                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
+                            <Link href={route('ticket', {id: '1'})} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
                                 <div>
                                     <h1 className='font-bold text-secondary dark:text-primary'>Nº 1450</h1>
                                     <p>Sistemas Academicos</p>
@@ -67,7 +70,7 @@ export default function Dashboard({ auth, myDepartament }) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div className='max-h-[50vh] overflow-y-auto'>
-                            <Link href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
+                            <Link href={route('ticket', {id: '1'})} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
                                 <div>
                                     <h1 className='font-bold text-secondary dark:text-primary'>Nº 1450</h1>
                                     <p>Sistemas Academicos</p>
@@ -101,18 +104,18 @@ export default function Dashboard({ auth, myDepartament }) {
                         <div className='max-h-[50vh] overflow-y-auto'>
                             {
                                 myDepartament.map((ticketDepartament) => (
-                                    <Link key={ticketDepartament.id} href={route('ticket')} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
+                                    <Link key={ticketDepartament.id} href={route('ticket', {id: ticketDepartament.id})} className='w-full h-32 space-x-4 shadow-md border dark:border-gray-600 mb-4 flex items-center justify-between p-5 transition-opacity hover:bg-slate-300/15'>
                                         <div>
                                             <h1 className='font-bold text-secondary dark:text-primary'>Nº {ticketDepartament.id}</h1>
                                             <p>{ticketDepartament.departament.name}</p>
                                             <p>{ticketDepartament.user.name}</p>
                                         </div>
                                         <div className='flex items-center gap-3'>
-                                            <p><span className='font-bold'>Departamento:</span> Recursos Humanos</p>
-                                            <p><span className='font-bold'>Tempo:</span> 10h</p>
-                                            <p><span className='font-bold'>Prioriedade:</span> <span className='text-green-500'>Baixa</span></p>
+                                            <p><span className='font-bold'>Departamento:</span> {ticketDepartament.user.departament.name}</p>
+                                            <p><span className='font-bold'>Tempo:</span> {getElapsedHours(ticketDepartament.created_at)}</p>
+                                            <p><span className='font-bold'>Prioriedade:</span> <span style={{color: ticketDepartament.priority.color || ''}}>{ticketDepartament.priority.name}</span></p>
                                             <p><span className='font-bold'>Tipo:</span> Insidente</p>
-                                            <p><span className='font-bold'>Status:</span> Em Analise</p>
+                                            <p><span className='font-bold'>Status:</span> {ticketDepartament.status.name}</p>
                                         </div>
                                     </Link>
                                 ))

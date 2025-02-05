@@ -8,9 +8,17 @@ use Inertia\Inertia;
 
 class TicketController extends Controller
 {
-    public function index()
+    public function index(int $id)
     {
-        $ticket = Ticket::with(['files'])->find(1);
+        $ticket = Ticket::with(
+            [
+                'files', 
+                'departament', 
+                'user.departament',
+                'status',
+                'priority'
+            ]
+        )->find($id);
         return Inertia::render('Tickets/Ticket', compact('ticket'));
     }
 
